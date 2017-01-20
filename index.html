@@ -1,306 +1,312 @@
 <html>
-<style>
-  .test {
-    font-family: Arial;
-    border-radius: 5px;
-    color: #801515;
-    font-size: 12x;
-    height:30px;
-    width:121px;
-    border: solid #801515 3px;
-    font-weight: bold;
-    background: #FFFFFF;
-  }
-  .test:hover {
-    background: #801515;
-    color: #FFFFFF;
-    text-decoration: none;
-  }
-  br {line-height: 175%;}
-</style>
-
-  <body class="devsite-layout-docs devsite-framebox">
-<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-<script type="text/javascript">
-  google.charts.load('current', {packages:['corechart']});
-  google.charts.setOnLoadCallback(drawExample2);
-  function drawExample2() {
-    // Some raw data (not necessarily accurate)
-    var defaultData = [['Distance', 'Min', 'Range', 'Default'],
-		    ['< 250',  1.6,  16.2, 0],
-		    ['300',    4.5,  9.3,  0],
-		    ['350',    2.0,  13.8, 0],
-		    ['400',    7.2,  20.4, 0],
-		    ['450',    5.4,  19.5, 0],
-		    ['500',    0.0,  27.3, 0],
-		    ['> 500',  0.0,  33.3, 0]];
-                  
-    var drewGibson = [['Distance', 'Min', 'Range', 'Gibson'],
-		    ['< 250',  1.6,  16.2, 10.5],
-		    ['300',    4.5,  9.3,  8.8],
-		    ['350',    2.0,  13.8, 11.1],
-		    ['400',    7.2,  20.4, 17.8],
-		    ['450',    5.4,  19.5, 16.4],
-		    ['500',    0.0,  27.3, 27.3],
-		    ['> 500',  0.0,  33.3, 18.2]];    
-        
-    var eagleMcMahon = [['Distance', 'Min', 'Range', 'McMahon'],
-		    ['< 250',  1.6,  16.2, 7.5],
-		    ['300',    4.5,  9.3,  9.3],
-		    ['350',    2.0,  13.8, 9.4],
-		    ['400',    7.2,  20.4, 20.4],
-		    ['450',    5.4,  19.5, 19.4],
-		    ['500',    0.0,  27.3, 11.8],
-		    ['> 500',  0.0,  33.3, 12.5]];           
-    var jeremyKoling = [['Distance', 'Min', 'Range', 'Koling'],
-		    ['< 250',  1.6,  16.2, 10.9],
-		    ['300',    4.5,  9.3,  7.8],
-		    ['350',    2.0,  13.8, 5.9],
-		    ['400',    7.2,  20.4, 14.6],
-		    ['450',    5.4,  19.5, 18.8],
-		    ['500',    0.0,  27.3, 8.7],
-		    ['> 500',  0.0,  33.3, 25.0]];  
-    var nateDoss = [['Distance', 'Min', 'Range', 'Doss'],
-		    ['< 250',  1.6,  16.2, 4.7],
-		    ['300',    4.5,  9.3,  5.3],
-		    ['350',    2.0,  13.8, 2.0],
-		    ['400',    7.2,  20.4, 10.2],
-		    ['450',    5.4,  19.5, 11.0],
-		    ['500',    0.0,  27.3, 18.8],
-		    ['> 500',  0.0,  33.3, 33.3]];  
-    var nateSexton = [['Distance', 'Min', 'Range', 'Sexton'],
-		    ['< 250',  1.6,  16.2, 4.1],
-		    ['300',    4.5,  9.3,  7.6],
-		    ['350',    2.0,  13.8, 4.5],
-		    ['400',    7.2,  20.4, 7.9],
-		    ['450',    5.4,  19.5, 5.4],
-		    ['500',    0.0,  27.3, 0],
-		    ['> 500',  0.0,  33.3, 0]];
-        
- 		var paulUlibarri = [['Distance', 'Min', 'Range', 'Ulibarri'],
-		    ['< 250',  1.6,  16.2, 3.4],
-		    ['300',    4.5,  9.3,  4.5],
-		    ['350',    2.0,  13.8, 10.5],
-		    ['400',    7.2,  20.4, 12.3],
-		    ['450',    5.4,  19.5, 15.7],
-		    ['500',    0.0,  27.3, 8.3],
-		    ['> 500',  0.0,  33.3, 14.3]];
-        
-     var nikkoLocastro = [['Distance', 'Min', 'Range', 'Locastro'],
-		    ['< 250',  1.6,  16.2, 5.5],
-		    ['300',    4.5,  9.3,  5.1],
-		    ['350',    2.0,  13.8, 13.8],
-		    ['400',    7.2,  20.4, 7.2],
-		    ['450',    5.4,  19.5, 15.7],
-		    ['500',    0.0,  27.3, 14.3],
-		    ['> 500',  0.0,  33.3, 26.7]];
-        
-     var paulMcBeth = [['Distance', 'Min', 'Range', 'McBeth'],
-		    ['< 250',  1.6,  16.2, 9.6],
-		    ['300',    4.5,  9.3,  7.3],
-		    ['350',    2.0,  13.8, 7.7],
-		    ['400',    7.2,  20.4, 11.8],
-		    ['450',    5.4,  19.5, 6.4],
-		    ['500',    0.0,  27.3, 4.5],
-		    ['> 500',  0.0,  33.3, 11.8]];
-     var philoBrathwaite = [['Distance', 'Min', 'Range', 'Brathwaite'],
-		    ['< 250',  1.6,  16.2, 7.8],
-		    ['300',    4.5,  9.3,  6.9],
-		    ['350',    2.0,  13.8, 10.9],
-		    ['400',    7.2,  20.4, 16.1],
-		    ['450',    5.4,  19.5, 14.1],
-		    ['500',    0.0,  27.3, 4.3],
-		    ['> 500',  0.0,  33.3, 20]];
-     var rickyWysocki = [['Distance', 'Min', 'Range', 'Wysocki'],
-		    ['< 250',  1.6,  16.2, 1.6],
-		    ['300',    4.5,  9.3,  4.8],
-		    ['350',    2.0,  13.8, 6.7],
-		    ['400',    7.2,  20.4, 10.2],
-		    ['450',    5.4,  19.5, 10.5],
-		    ['500',    0.0,  27.3, 14.3],
-		    ['> 500',  0.0,  33.3, 10.5]];
-     var simonLizotte = [['Distance', 'Min', 'Range', 'Lizotte'],
-		    ['< 250',  1.6,  16.2, 0],
-		    ['300',    4.5,  9.3,  6.3],
-		    ['350',    2.0,  13.8, 10],
-		    ['400',    7.2,  20.4, 13.7],
-		    ['450',    5.4,  19.5, 7.7],
-		    ['500',    0.0,  27.3, 33.3],
-		    ['> 500',  0.0,  33.3, 25.0]];
-	   	        
-     var willSchusterick = [['Distance', 'Min', 'Range', 'Schusterick'],
-		    ['< 250',  1.6,  16.2, 16.2],
-		    ['300',    4.5,  9.3,  7.1],
-		    ['350',    2.0,  13.8, 11.5],
-		    ['400',    7.2,  20.4, 11.7],
-		    ['450',    5.4,  19.5, 19.5],
-		    ['500',    0.0,  27.3, 15.0],
-		    ['> 500',  0.0,  33.3, 9.1]];
-    // Create and populate the data tables.
-    var data = [];
-    data[0] = google.visualization.arrayToDataTable(defaultData);
-    data[1] = google.visualization.arrayToDataTable(drewGibson);
-    data[2] = google.visualization.arrayToDataTable(eagleMcMahon);
-    data[3] = google.visualization.arrayToDataTable(jeremyKoling);
-    data[4] = google.visualization.arrayToDataTable(nateDoss);
-    data[5] = google.visualization.arrayToDataTable(nateSexton);
-    data[6] = google.visualization.arrayToDataTable(nikkoLocastro);
-    data[7] = google.visualization.arrayToDataTable(paulMcBeth);
-    data[8] = google.visualization.arrayToDataTable(paulUlibarri);
-    data[9] = google.visualization.arrayToDataTable(philoBrathwaite);
-    data[10] = google.visualization.arrayToDataTable(rickyWysocki);    
-    data[11] = google.visualization.arrayToDataTable(simonLizotte);   
-    data[12] = google.visualization.arrayToDataTable(willSchusterick);   
-    
-    var options = {
-      width: 750,
-      height: 380,
-      title : 'BIRDIE PERCENTAGE BY HOLE DISTANCE',
-      hAxis: {title: 'Distance (Par 3)'},
-      isStacked: 'true',
-      legend: {position: 'bottom', alignment: 'left', textStle : { fontSize: 10}},
-      hAxis: { textStyle : { fontSize: 10}, title: 'Distance (Par 3)'},
-      vAxis: {ticks: [{v:0, f:'0%'},{v:20, f:'20%'},{v:40, f:'40%'},{v:60, f:'60%'},{v:80, f:'80%'},{v:100, f:'100%'}],baselineColor: '#CCCCCC'},
-      chartArea: {  width: "80%", height: "70%" },
-      seriesType: "area",
-      curveType: 'function',
+ <style>
+   .test {
+     font-family: Arial;
+     border-radius: 5px;
+     color: #1B4965;
+     font-size: 12x;
+     height:30px;
+     width:121px;
+     border: solid #1B4965 3px;
+     font-weight: bold;
+     background: #FFFFFF;
+   }
+   .test:hover {
+     background: #1B4965;
+     color: #FFFFFF;
+     text-decoration: none;
+   }
+   br {line-height: 175%;}
+ </style>
  
-      animation:{
-        duration: 1000,
-        easing: 'out'
-      },
-          series: {
-            0: { color: 'white', areaOpacity: 0, lineWidth: 0, visibleInLegend: false},
-            1: { color: '#D46A6A', areaOpacity: 0.2, lineWidth: 0},
-            2: { type: 'line', lineWidth: 5, color: '#D46A6A', pointShape: 'circle', pointSize: '10'}
-          }
-    };
-    var current = 0;
-    // Create and draw the visualization.
-    var chart = new google.visualization.ComboChart(document.getElementById('example2-visualization'));
-    var buttonDefault = document.getElementById('buttonDefault');
-    var buttonGibson = document.getElementById('buttonGibson');
-    var buttonMcMahon = document.getElementById('buttonMcMahon');
-    var buttonKoling = document.getElementById('buttonKoling');
-    var buttonDoss = document.getElementById('buttonDoss');
-    var buttonSexton = document.getElementById('buttonSexton');
-    var buttonLocastro = document.getElementById('buttonLocastro');
-    var buttonMcBeth = document.getElementById('buttonMcBeth');
-    var buttonUlibarri = document.getElementById('buttonUlibarri');
-    var buttonBrathwaite = document.getElementById('buttonBrathwaite');
-    var buttonWysocki = document.getElementById('buttonWysocki');
-    var buttonLizotte = document.getElementById('buttonLizotte');
-    var buttonSchusterick = document.getElementById('buttonSchusterick');
-    function drawChart() {
-       // Disabling the button while the chart is drawing.
-      buttonDefault.disabled = true;
-      buttonGibson.disabled = true;
+ <body class="devsite-layout-docs devsite-framebox">
+ <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+ <script type="text/javascript">
+   google.charts.load('current', {packages:['corechart']});
+   google.charts.setOnLoadCallback(drawExample2);
+   function drawExample2() {
+     // Some raw data (not necessarily accurate)
+     var defaultData = [['Distance', 'Min', 'Range', 'Default'],
+ 		    ['< 250',  45.8, 25.7, 0],
+ 		    ['300',    44.0, 27.4, 0],
+ 		    ['350',    28.1, 25.0, 0],
+ 		    ['400',    26.7, 15.8, 0],
+ 		    ['450',    20.2, 18.4, 0],
+ 		    ['500',     5.0, 27.1, 0],
+ 		    ['> 500',   0.0, 21.1, 0]];
+                   
+     var drewGibson = [['Distance', 'Min', 'Range', 'Gibson'],
+ 		    ['< 250',  45.8, 25.7, 47.4],
+ 		    ['300',    44.0, 27.4, 54.9],
+ 		    ['350',    28.1, 25.0, 37.8],
+ 		    ['400',    26.7, 15.8, 26.7],
+ 		    ['450',    20.2, 18.4, 27.4],
+ 		    ['500',     5.0, 27.1, 18.2],
+ 		    ['> 500',   0.0, 21.1,  11.8]];     
+         
+     var eagleMcMahon = [['Distance', 'Min', 'Range', 'McMahon'],
+ 		    ['< 250',  45.8, 25.7, 60.0],
+ 		    ['300',    44.0, 27.4, 53.3],
+ 		    ['350',    28.1, 25.0, 42.4],
+ 		    ['400',    26.7, 15.8, 34.3],
+ 		    ['450',    20.2, 18.4, 27.4],
+ 		    ['500',     5.0, 27.1, 17.6],
+ 		    ['> 500',   0.0, 21.1,  18.8]];         
+     var jeremyKoling = [['Distance', 'Min', 'Range', 'Koling'],
+ 		    ['< 250',  45.8, 25.7, 54.3],
+ 		    ['300',    44.0, 27.4, 60.8],
+ 		    ['350',    28.1, 25.0, 38.1],
+ 		    ['400',    26.7, 15.8, 37.3],
+ 		    ['450',    20.2, 18.4, 35.3],
+ 		    ['500',     5.0, 27.1, 30.4],
+ 		    ['> 500',   0.0, 21.1,  21.1]];  
+     var nateDoss = [['Distance', 'Min', 'Range', 'Doss'],
+ 		    ['< 250',  45.8, 25.7, 53.5],
+ 		    ['300',    44.0, 27.4, 58.9],
+ 		    ['350',    28.1, 25.0, 40.4],
+ 		    ['400',    26.7, 15.8, 35.4],
+ 		    ['450',    20.2, 18.4, 34.2],
+ 		    ['500',     5.0, 27.1, 18.8],
+ 		    ['> 500',   0.0, 21.1,  5.6]];  
+     var nateSexton = [['Distance', 'Min', 'Range', 'Sexton'],
+ 		    ['< 250',  45.8, 25.7, 71.4],
+ 		    ['300',    44.0, 27.4, 66.7],
+ 		    ['350',    28.1, 25.0, 38.7],
+ 		    ['400',    26.7, 15.8, 42.4],
+ 		    ['450',    20.2, 18.4, 29.3],
+ 		    ['500',     5.0, 27.1, 5.0],
+ 		    ['> 500',   0.0, 21.1,  4.8]]; 
+         
+  		var paulUlibarri = [['Distance', 'Min', 'Range', 'Ulibarri'],
+ 		    ['< 250',  45.8, 25.7, 45.8],
+ 		    ['300',    44.0, 27.4, 46.4],
+ 		    ['350',    28.1, 25.0, 40.0],
+ 		    ['400',    26.7, 15.8, 31.9],
+ 		    ['450',    20.2, 18.4, 25.8],
+ 		    ['500',     5.0, 27.1, 29.2],
+ 		    ['> 500',   0.0, 21.1,  5.3]];
+         
+      var nikkoLocastro = [['Distance', 'Min', 'Range', 'Locastro'],
+ 		    ['< 250',  45.8, 25.7, 61.8],
+ 		    ['300',    44.0, 27.4, 58.5],
+ 		    ['350',    28.1, 25.0, 37.1],
+ 		    ['400',    26.7, 15.8, 37.2],
+ 		    ['450',    20.2, 18.4, 29.4],
+ 		    ['500',     5.0, 27.1, 19.0],
+ 		    ['> 500',   0.0, 21.1,  16.0]];
+         
+      var paulMcBeth = [['Distance', 'Min', 'Range', 'McBeth'],
+ 		    ['< 250',  45.8, 25.7, 67.3],
+ 		    ['300',    44.0, 27.4, 65.1],
+ 		    ['350',    28.1, 25.0, 53.1],
+ 		    ['400',    26.7, 15.8, 42.5],
+ 		    ['450',    20.2, 18.4, 27.7],
+ 		    ['500',     5.0, 27.1, 22.7],
+ 		    ['> 500',   0.0, 21.1, 16.0]];
+      var philoBrathwaite = [['Distance', 'Min', 'Range', 'Brathwaite'],
+ 		    ['< 250',  45.8, 25.7, 51.0],
+ 		    ['300',    44.0, 27.4, 56.0],
+ 		    ['350',    28.1, 25.0, 50.8],
+ 		    ['400',    26.7, 15.8, 33.9],
+ 		    ['450',    20.2, 18.4, 20.2],
+ 		    ['500',     5.0, 27.1, 8.7],
+ 		    ['> 500',   0.0, 21.1, 0.0]];
+      var rickyWysocki = [['Distance', 'Min', 'Range', 'Wysocki'],
+ 		    ['< 250',  45.8, 25.7, 53.2],
+ 		    ['300',    44.0, 27.4, 71.4],
+ 		    ['350',    28.1, 25.0, 46.0],
+ 		    ['400',    26.7, 15.8, 42.4],
+ 		    ['450',    20.2, 18.4, 38.6],
+ 		    ['500',     5.0, 27.1, 32.1],
+ 		    ['> 500',   0.0, 21.1, 3.4]];
+      var simonLizotte = [['Distance', 'Min', 'Range', 'Lizotte'],
+ 		    ['< 250',  45.8, 25.7, 89.5],
+ 		    ['300',    44.0, 27.4, 46.9],
+ 		    ['350',    28.1, 25.0, 42.0],
+ 		    ['400',    26.7, 15.8, 42.5],
+ 		    ['450',    20.2, 18.4, 42.3],
+ 		    ['500',     5.0, 27.1, 55.6],
+ 		    ['> 500',   0.0, 21.1, 42.9]];
+ 	   	        
+      var willSchusterick = [['Distance', 'Min', 'Range', 'Schusterick'],
+ 		    ['< 250',  45.8, 25.7, 48.6],
+ 		    ['300',    44.0, 27.4, 44.0],
+ 		    ['350',    28.1, 25.0, 28.1],
+ 		    ['400',    26.7, 15.8, 29.9],
+ 		    ['450',    20.2, 18.4, 25.6],
+ 		    ['500',     5.0, 27.1, 25.0],
+ 		    ['> 500',   0.0, 21.1, 18.8]];
+     // Create and populate the data tables.
+     var data = [];
+     data[0] = google.visualization.arrayToDataTable(defaultData);
+     data[1] = google.visualization.arrayToDataTable(drewGibson);
+     data[2] = google.visualization.arrayToDataTable(eagleMcMahon);
+     data[3] = google.visualization.arrayToDataTable(jeremyKoling);
+     data[4] = google.visualization.arrayToDataTable(nateDoss);
+     data[5] = google.visualization.arrayToDataTable(nateSexton);
+     data[6] = google.visualization.arrayToDataTable(nikkoLocastro);
+     data[7] = google.visualization.arrayToDataTable(paulMcBeth);
+     data[8] = google.visualization.arrayToDataTable(paulUlibarri);
+     data[9] = google.visualization.arrayToDataTable(philoBrathwaite);
+     data[10] = google.visualization.arrayToDataTable(rickyWysocki);    
+     data[11] = google.visualization.arrayToDataTable(simonLizotte);   
+     data[12] = google.visualization.arrayToDataTable(willSchusterick);   
+     
+     var options = {
+       width: 750,
+       height: 380,
+       title : 'BIRDIE PERCENTAGE BY HOLE DISTANCE',
+       hAxis: {title: 'Distance (Par 3)'},
+       isStacked: 'true',
+       legend: {position: 'bottom', alignment: 'left', textStle : { fontSize: 10}},
+       hAxis: { textStyle : { fontSize: 10}, title: 'Distance (Par 3)'},
+       vAxis: {ticks: [{v:0, f:'0%'},{v:20, f:'20%'},{v:40, f:'40%'},{v:60, f:'60%'},{v:80, f:'80%'},{v:100, f:'100%'}],baselineColor: '#CCCCCC'},
+       chartArea: {  width: "80%", height: "70%" },
+       seriesType: "area",
+       curveType: 'function',
+  
+       animation:{
+         duration: 1000,
+         easing: 'out'
+       },
+           series: {
+             0: { color: 'white', areaOpacity: 0, lineWidth: 0, visibleInLegend: false},
+             1: { color: '#3FC1C9', areaOpacity: 0.2, lineWidth: 0},
+             2: { type: 'line', lineWidth: 5, color: '#3FC1C9', pointShape: 'circle', pointSize: '10'}
+           }
+     };
+     var current = 0;
+     // Create and draw the visualization.
+     var chart = new google.visualization.ComboChart(document.getElementById('example2-visualization'));
+     var buttonDefault = document.getElementById('buttonDefault');
+     var buttonGibson = document.getElementById('buttonGibson');
+     var buttonMcMahon = document.getElementById('buttonMcMahon');
+     var buttonKoling = document.getElementById('buttonKoling');
+     var buttonDoss = document.getElementById('buttonDoss');
+     var buttonSexton = document.getElementById('buttonSexton');
+     var buttonLocastro = document.getElementById('buttonLocastro');
+     var buttonMcBeth = document.getElementById('buttonMcBeth');
+     var buttonUlibarri = document.getElementById('buttonUlibarri');
+     var buttonBrathwaite = document.getElementById('buttonBrathwaite');
+     var buttonWysocki = document.getElementById('buttonWysocki');
+     var buttonLizotte = document.getElementById('buttonLizotte');
+     var buttonSchusterick = document.getElementById('buttonSchusterick');
+     function drawChart() {
+	     // Disabling the button while the chart is drawing.
+       buttonDefault.disabled = true;
+       buttonGibson.disabled = true;
       buttonMcMahon.disabled = true;
-      buttonKoling.disabled = true;
-      buttonDoss.disabled = true;
-      buttonSexton.disabled = true;
-      buttonLocastro.disabled = true;
-      buttonMcBeth.disabled = true;
-      buttonUlibarri.disabled = true;
-      buttonBrathwaite.disabled = true;
-      buttonWysocki.disabled = true;
-      buttonLizotte.disabled = true;
-      buttonSchusterick.disabled = true;
-      google.visualization.events.addListener(chart, 'ready',
-          function() {
-            buttonDefault.disabled = false;
-            buttonGibson.disabled = false;
-            buttonMcMahon.disabled = false;
-            buttonKoling.disabled = false;
-            buttonDoss.disabled = false;
-            buttonSexton.disabled = false;
-            buttonLocastro.disabled = false;
-            buttonMcBeth.disabled = false;
-            buttonUlibarri.disabled = false;
-            buttonBrathwaite.disabled = false;
-      			buttonWysocki.disabled = false;
-      			buttonLizotte.disabled = false;
+       buttonKoling.disabled = true;
+       buttonDoss.disabled = true;
+       buttonSexton.disabled = true;
+       buttonLocastro.disabled = true;
+       buttonMcBeth.disabled = true;
+       buttonUlibarri.disabled = true;
+       buttonBrathwaite.disabled = true;
+       buttonWysocki.disabled = true;
+       buttonLizotte.disabled = true;
+       buttonSchusterick.disabled = true;
+       google.visualization.events.addListener(chart, 'ready',
+           function() {
+             buttonDefault.disabled = false;
+             buttonGibson.disabled = false;
+             buttonMcMahon.disabled = false;
+             buttonKoling.disabled = false;
+             buttonDoss.disabled = false;
+             buttonSexton.disabled = false;
+             buttonLocastro.disabled = false;
+             buttonMcBeth.disabled = false;
+             buttonUlibarri.disabled = false;
+             buttonBrathwaite.disabled = false;
+       			buttonWysocki.disabled = false;
+       			buttonLizotte.disabled = false;
       			buttonSchusterick.disabled = false;
-					});
-      chart.draw(data[current], options);
-    }
-    drawChart();
-    buttonDefault.onclick = function() {
-      current = 0;
+ 					});
+       chart.draw(data[current], options);
+     }
+     drawChart();
+     buttonDefault.onclick = function() {
+       current = 0;
+       drawChart();
+     }
+     
+     buttonGibson.onclick = function() {
+       current = 1;
       drawChart();
+     }
+     
+     buttonMcMahon.onclick = function() {
+       current = 2;
+       drawChart();
+    }
+     buttonKoling.onclick = function() {
+       current = 3;
+       drawChart();
+     }
+     buttonDoss.onclick = function() {
+       current = 4;
+       drawChart();
+     }
+     
+     buttonSexton.onclick = function() {
+       current = 5;
+       drawChart();
+     }
+     
+     buttonLocastro.onclick = function() {
+       current = 6;
+       drawChart();
+     }
+     buttonMcBeth.onclick = function() {
+       current = 7;
+       drawChart();
+     }
+     buttonUlibarri.onclick = function() {
+       current = 8;
+       drawChart();
     }
     
-    buttonGibson.onclick = function() {
-      current = 1;
-      drawChart();
-    }
-    
-    buttonMcMahon.onclick = function() {
-      current = 2;
-      drawChart();
-    }
-    buttonKoling.onclick = function() {
-      current = 3;
-      drawChart();
-    }
-    buttonDoss.onclick = function() {
-      current = 4;
-      drawChart();
-    }
-    
-    buttonSexton.onclick = function() {
-      current = 5;
-      drawChart();
-    }
-    
-    buttonLocastro.onclick = function() {
-      current = 6;
-      drawChart();
-    }
-    buttonMcBeth.onclick = function() {
-      current = 7;
-      drawChart();
-    }
-    buttonUlibarri.onclick = function() {
-      current = 8;
-      drawChart();
-    }
-    
-    buttonBrathwaite.onclick = function() {
-      current = 9;
-      drawChart();
-    }
-    
-    buttonWysocki.onclick = function() {
-      current = 10;
-      drawChart();
-    }
-    
-    buttonLizotte.onclick = function() {
-      current = 11;
-      drawChart();
-    }
-    
-    buttonSchusterick.onclick = function() {
-      current = 12;
-      drawChart();
-    }
-    
-  }
-</script>
-<div id="example2-visualization"></div>
-
-<button id="buttonGibson" class="test">Drew Gibson</button>
-<button id="buttonMcMahon" class="test">Eagle McMahon</button>
-<button id="buttonKoling" class="test">Jeremy Koling</button>
-<button id="buttonDoss" class="test">Nate Doss</button>
-<button id="buttonSexton" class="test">Nate Sexton</button>
-<button id="buttonLocastro" class="test">Nikko Locastro</button>
-<br>
-<button id="buttonMcBeth" class="test">Paul McBeth</button>
-<button id="buttonUlibarri" class="test">Paul Ulibarri</button>
-<button id="buttonBrathwaite" class="test">Philo Brathwaite</button>
-<button id="buttonWysocki" class="test">Ricky Wysocki</button>
-<button id="buttonLizotte" class="test">Simon Lizotte</button>
-<button id="buttonSchusterick" class="test">Will Schusterick</button><br>
-<button id="buttonDefault" class="test">Clear</button>
+     buttonBrathwaite.onclick = function() {
+       current = 9;
+       drawChart();
+     }
+     
+     buttonWysocki.onclick = function() {
+       current = 10;
+       drawChart();
+     }
+     
+     buttonLizotte.onclick = function() {
+       current = 11;
+       drawChart();
+     }
+     
+     buttonSchusterick.onclick = function() {
+       current = 12;
+       drawChart();
+     }
+     
+   }
+ </script>
+ <div id="example2-visualization"></div>
+ 
+ <button id="buttonGibson" class="test">Drew Gibson</button>
+ <button id="buttonMcMahon" class="test">Eagle McMahon</button>
+ <button id="buttonKoling" class="test">Jeremy Koling</button>
+ <button id="buttonDoss" class="test">Nate Doss</button>
+ <button id="buttonSexton" class="test">Nate Sexton</button>
+ <button id="buttonLocastro" class="test">Nikko Locastro</button>
+ <br>
+ <button id="buttonMcBeth" class="test">Paul McBeth</button>
+ <button id="buttonUlibarri" class="test">Paul Ulibarri</button>
+ <button id="buttonBrathwaite" class="test">Philo Brathwaite</button>
+ <button id="buttonWysocki" class="test">Ricky Wysocki</button>
+ <button id="buttonLizotte" class="test">Simon Lizotte</button>
+ <button id="buttonSchusterick" class="test">Will Schusterick</button><br>
+ <button id="buttonDefault" class="test">Clear</button>
+   
+ 
+ 
+ 
+   </body>
+ </html>
