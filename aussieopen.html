@@ -1,0 +1,184 @@
+<html>
+<header>
+<script src="https://www.google.com/jsapi?callback=displayChartGeoChartSPLCraw" type="text/javascript"></script>
+</header>
+<script>
+google.load('visualization', '1', {packages: ['controls']});
+google.setOnLoadCallback(drawChart);
+
+function drawChart () {
+  var data = new google.visualization.DataTable();
+  data.addColumn('number', 'Hole');
+  data.addColumn('number', 'McMahon');
+  data.addColumn('number', 'Kajiyama');
+  data.addColumn('number', 'McBeth');
+  data.addColumn('number', 'Wysocki');
+  
+  data.addRows([
+    // change strings to Dates (year, month), where months are zero-indexed
+[1,0,0,1,0],
+[2,-1,-1,0,-1],
+[3,-2,-1,-1,-2],
+[4,-2,-2,-2,-3],
+[5,-2,-3,-2,-3],
+[6,-3,-4,-3,-4],
+[7,-4,-5,-4,-4],
+[8,-5,-6,-5,-5],
+[9,-6,-7,-5,-6],
+[10,-6,-8,-6,-7],
+[11,-7,-8,-7,-7],
+[12,-6,-8,-8,-5],
+[13,-7,-8,-8,-6],
+[14,-8,-7,-7,-7],
+[15,-9,-7,-8,-8],
+[16,-10,-8,-9,-7],
+[17,-11,-9,-9,-7],
+[18,-12,-10,-8,-8],
+[19,-13,-10,-7,-9],
+[20,-14,-11,-8,-10],
+[21,-15,-11,-8,-11],
+[22,-16,-12,-8,-11],
+[23,-17,-12,-8,-11],
+[24,-18,-13,-9,-13],
+[25,-18,-14,-10,-14],
+[26,-19,-14,-11,-15],
+[27,-20,-15,-11,-16],
+[28,-21,-15,-12,-17],
+[29,-22,-16,-13,-18],
+[30,-23,-14,-13,-19],
+[31,-24,-14,-14,-20],
+[32,-25,-15,-14,-21],
+[33,-26,-16,-14,-22],
+[34,-27,-14,-16,-23],
+[35,-28,-14,-17,-24],
+[36,-28,-15,-18,-25],
+[37,-29,-15,-19,-26],
+[38,-30,-16,-20,-27],
+[39,-30,-16,-21,-28],
+[40,-30,-17,-21,-29],
+[41,-30,-17,-22,-29],
+[42,-31,-18,-23,-30],
+[43,-32,-19,-23,-30],
+[44,-32,-20,-24,-31],
+[45,-31,-21,-24,-32],
+[46,-32,-21,-24,-29],
+[47,-32,-21,-25,-30],
+[48,-32,-21,-24,-30],
+[49,-33,-21,-25,-31],
+[50,-34,-20,-24,-29],
+[51,-33,-21,-25,-30],
+[52,-34,-22,-24,-31],
+[53,-34,-23,-25,-31],
+[54,-35,-22,-24,-32],
+[55,-36,-22,-25,-33],
+[56,-36,-22,-26,-33],
+[57,-37,-22,-26,-34],
+[58,-38,-23,-27,-35],
+[59,-38,-24,-28,-36],
+[60,-39,-25,-29,-37],
+[61,-40,-26,-29,-38],
+[62,-41,-27,-30,-39],
+[63,-42,-28,-30,-40],
+[64,-43,-29,-31,-41],
+[65,-44,-30,-32,-42],
+[66,-44,-29,-31,-43],
+[67,-45,-30,-32,-44],
+[68,-46,-30,-33,-45],
+[69,-47,-31,-34,-46],
+[70,-48,-32,-36,-46],
+[71,-48,-33,-37,-47],
+[72,-47,-34,-38,-48]
+  ]);
+  
+  var rangeFilter = new google.visualization.ControlWrapper({
+    controlType: 'ChartRangeFilter',
+    containerId: 'range_filter_div',
+    options: {
+      filterColumnIndex: 0,
+      ui: {
+        chartOptions: {
+          height: 50,
+          width: 800, // must be the same in both the chart and the control
+          chartArea: {
+        left: 50,
+	top: 0,
+            width: '70%' // must be the same in both the chart and the control
+          },
+					hAxis: {
+        		 gridlines: {count: 12}
+        },
+        },
+        chartView: {
+          columns: [0, 1]
+        }
+      }
+    },
+            
+    state: {
+      range: {
+        // set the starting range to January - April 2012 (change to whatever date range you like)
+        start: 1,
+        end: 18
+      }
+    }
+  });
+    
+  var chart = new google.visualization.ChartWrapper({
+    chartType: 'LineChart',
+    containerId: 'chart_div',
+    options: {
+      // width and chartArea.width should be the same for the filter and chart
+      chartArea: {
+        left: 50,
+	top: 50,
+	width: '70%', // must be the same in both the chart and the control
+        height: '70%'
+      },
+      title: 'Aussie Open 2017 Scores',
+      width: 800, // must be the same in both the chart and the control
+      height: 400,
+      fontName: ["Arial"],
+      colors: ['#85C1E9','#FF906C','#9B59B6','#28B463'],
+      curveType: ['function'],
+      fontSize: ['13'],
+      hAxis: {
+        title: 'Hole', 
+      },
+      vAxis: {
+        title: 'Score (vs. Par)', 
+      },
+
+      legend: {
+        position: 'top',
+        textStyle: {
+          color: 'black',
+          fontSize: 12
+        }
+      },
+      lineWidth: 2,
+      pointSize: 7,
+      tooltip: {
+        textStyle: {
+          color: 'Black'
+        },
+        showColorCode: false
+      }
+      
+    }
+  });
+  
+  // Create the dashboard
+  var dash = new google.visualization.Dashboard(document.getElementById('dashboard'));
+  // bind the chart to the filter
+  dash.bind([rangeFilter], [chart]);
+  // draw the dashboard
+  dash.draw(data);
+}
+</script>
+<body>
+<div id="dashboard">
+    <div id="chart_div"></div>
+    <div id="range_filter_div"></div>
+</div>
+</body>
+</html>
