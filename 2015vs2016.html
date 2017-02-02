@@ -1,0 +1,90 @@
+<html>
+  <body class="devsite-layout-docs devsite-framebox">
+<p style="display: none; height: 0; width: 0">This is a snippet from developers.google.com</p>
+
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<script type="text/javascript">
+  google.charts.load('current', {packages:['corechart']});
+  google.charts.setOnLoadCallback(drawExample2);
+
+  function drawExample2() {
+    // Some raw data (not necessarily accurate)
+    var rowData1 = [['Player', 'Birdie %', 'Par %', 'Bogey %'],
+		    ['McBeth',     0.552, 0.372, 0.076],
+		    ['Wysocki',    0.527, 0.384, 0.089],
+		    ['Lizotte',    0.474, 0.386, 0.139],
+		    ['McMahon',    0.418, 0.452, 0.130],
+		    ['Doss',       0.400, 0.490, 0.110],
+		    ['Sexton',     0.392, 0.506, 0.102],
+		    ['Todd',       0.302, 0.562, 0.136],
+		    ['Brathwaite', 0.254, 0.563, 0.183]];
+                    
+    var rowData2 = [['Player', 'Birdie %', 'Par %', 'Bogey %'],
+        	    ['McBeth',     0.576, 0.351, 0.073],
+        	    ['Wysocki',    0.568, 0.346, 0.085],
+		    ['Lizotte',    0.516, 0.402, 0.082],
+		    ['McMahon',    0.476, 0.413, 0.112],
+		    ['Doss',       0.476, 0.452, 0.071],
+		    ['Sexton',     0.504, 0.433, 0.063],
+		    ['Todd',       0.407, 0.481, 0.111],
+		    ['Brathwaite', 0.475, 0.410, 0.114]];
+
+    // Create and populate the data tables.
+    var data = [];
+    data[0] = google.visualization.arrayToDataTable(rowData1);
+    data[1] = google.visualization.arrayToDataTable(rowData2);
+
+    var options = {
+      width: 600,
+      height: 340,
+      isStacked: 'percent',
+      legend: {position: 'bottom', alignment: 'left', textStyle : { fontSize: 10}},
+      hAxis : { textStyle : { fontSize: 10}},
+      chartArea: {  width: "80%", height: "70%" },
+      seriesType: "bars",
+ 
+      animation:{
+        duration: 1000,
+        easing: 'out'
+      },
+          series: {
+            0: { color: '#97D483' },
+            1: { color: '#83C0D4' },
+            2: { color: '#D49783' }
+
+          }
+
+    };
+    var current = 0;
+    // Create and draw the visualization.
+    var chart = new google.visualization.ComboChart(document.getElementById('example2-visualization'));
+    var button = document.getElementById('example2-b1');
+    function drawChart() {
+       // Disabling the button while the chart is drawing.
+      button.disabled = true;
+      google.visualization.events.addListener(chart, 'ready',
+          function() {
+            button.disabled = false;
+            button.value = 'Switch ' + (current ? '2016' : '2015');
+          });
+      options['title'] = (current ? '2016' : '2015') + ' Player Scoring Distribution';
+
+      chart.draw(data[current], options);
+    }
+    drawChart();
+
+    button.onclick = function() {
+      current = 1 - current;
+      drawChart();
+    }
+  }
+</script>
+<div id="example2-visualization"></div>
+<button id="example2-b1">Toggle Year</button>
+
+    
+
+
+
+  </body>
+</html>
