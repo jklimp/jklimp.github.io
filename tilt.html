@@ -1,0 +1,98 @@
+<html>
+  <body class="devsite-layout-docs devsite-framebox">
+<p style="display: none; height: 0; width: 0">This is a snippet from developers.google.com</p>
+
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<script type="text/javascript">
+  google.charts.load('current', {packages:['corechart']});
+  google.charts.setOnLoadCallback(drawExample2);
+
+  function drawExample2() {
+    // Some raw data (not necessarily accurate)
+    var rowData1 = [['Player', 'Birdie %', 'Par %', 'Bogey %'],
+		    ['Wysocki',    0.520, 0.403, 0.078],
+		    ['Lizotte',    0.506, 0.400, 0.094],
+		    ['McBeth',     0.505, 0.406, 0.089],
+		    ['Locastro',   0.440, 0.462, 0.098],
+		    ['Sexton',     0.440, 0.485, 0.075],
+		    ['McMahon',    0.431, 0.439, 0.130],
+		    ['Brathwaite', 0.428, 0.454, 0.118],
+		    ['Ulibarri',   0.425, 0.488, 0.087],
+		    ['Koling',     0.408, 0.459, 0.133],
+		    ['Doss',       0.407, 0.503, 0.090],
+		    ['Gibson',     0.389, 0.480, 0.132],
+		    ['Schusterick',0.386, 0.490, 0.124]];
+                    
+    var rowData2 = [['Player', 'Birdie %', 'Par %', 'Bogey %'],
+		    ['Wysocki',    0.552, 0.343, 0.105],
+		    ['Lizotte',    0.437, 0.437, 0.127],
+		    ['McBeth',     0.483, 0.425, 0.092],
+		    ['Locastro',   0.404, 0.500, 0.096],
+		    ['Sexton',     0.460, 0.506, 0.034],
+		    ['McMahon',    0.387, 0.462, 0.151],
+		    ['Brathwaite', 0.391, 0.470, 0.139],
+		    ['Ulibarri',   0.466, 0.466, 0.068],
+		    ['Koling',     0.429, 0.420, 0.152],
+		    ['Doss',       0.394, 0.493, 0.113],
+		    ['Gibson',     0.344, 0.448, 0.208],
+		    ['Schusterick',0.308, 0.549, 0.143]];
+
+    // Create and populate the data tables.
+    var data = [];
+    data[0] = google.visualization.arrayToDataTable(rowData1);
+    data[1] = google.visualization.arrayToDataTable(rowData2);
+
+    var options = {
+      width: 600,
+      height: 340,
+      isStacked: 'percent',
+      legend: {position: 'bottom', alignment: 'left', textStyle : { fontSize: 10}},
+      hAxis : { textStyle : { fontSize: 10}},
+      chartArea: {  width: "85%", height: "70%" },
+      seriesType: "bars",
+ 
+      animation:{
+        duration: 1000,
+        easing: 'out'
+      },
+          series: {
+            0: { color: '#97D483' },
+            1: { color: '#83C0D4' },
+            2: { color: '#D49783' }
+
+          }
+
+    };
+    var current = 0;
+    // Create and draw the visualization.
+    var chart = new google.visualization.ComboChart(document.getElementById('example2-visualization'));
+    var button = document.getElementById('example2-b1');
+    function drawChart() {
+       // Disabling the button while the chart is drawing.
+      button.disabled = true;
+      google.visualization.events.addListener(chart, 'ready',
+          function() {
+            button.disabled = false;
+            button.value = 'Switch ' + (current ? '2016' : '2015');
+          });
+      options['title'] = (current ? 'Tilt' : 'Average') + ' Player Scoring Distribution';
+
+      chart.draw(data[current], options);
+    }
+    drawChart();
+
+    button.onclick = function() {
+      current = 1 - current;
+      drawChart();
+    }
+  }
+</script>
+<div id="example2-visualization"></div>
+<button id="example2-b1">Toggle</button>
+
+    
+
+
+
+  </body>
+</html>
